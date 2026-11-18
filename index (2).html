@@ -1,0 +1,2533 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPI Akidah Akhlak: Iman, Islam, dan Ihsan | MTsN 3 Kab. Gorontalo</title>
+    <style>
+        /* ==========================================================================
+           PALET WARNA ISLAMI, EMAS ELEGAN & DESIGN TOKENS UTAMA
+           ========================================================================== */
+        :root {
+            --emerald-dark: #064e3b;
+            --emerald-primary: #047857;
+            --emerald-light: #10b981;
+            --emerald-soft: #ecfdf5;
+            --gold-dark: #92400e;
+            --gold-primary: #d97706;
+            --gold-light: #fbbf24;
+            --gold-soft: #fffbeb;
+            --slate-dark: #0f172a;
+            --slate-text: #1e293b;
+            --slate-muted: #64748b;
+            --bg-main: #f8fafc;
+            --surface: #ffffff;
+            --border-color: #e2e8f0;
+            --danger: #dc2626;
+            --danger-soft: #fef2f2;
+            --info-soft: #f0f9ff;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
+            --shadow-md: 0 8px 24px rgba(6, 78, 59, 0.12);
+            --transition: all 0.25s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--slate-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ==========================================================================
+           COVER PEMBUKA & TEKS BERJALAN (RUNNING TEXT)
+           ========================================================================== */
+        .cover-overlay {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #2e1065 0%, #4c1d95 50%, #6d28d9 100%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            color: #ffffff;
+            text-align: center;
+            transition: opacity 0.55s ease, visibility 0.55s ease;
+            overflow-y: auto;
+        }
+
+        .cover-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .running-text-bar {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.35);
+            border-bottom: 2px solid var(--gold-light);
+            padding: 0.6rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .running-text-bar.in-app {
+            background: #022c22;
+            border-bottom: 1px solid rgba(251, 191, 36, 0.4);
+            padding: 0.45rem 0;
+        }
+
+        .running-text-track {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marqueeScroll 18s linear infinite;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--gold-light);
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes marqueeScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .cover-content {
+            max-width: 720px;
+            padding: 2rem 1.5rem;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cover-emblem {
+            width: 112px;
+            height: 112px;
+            background: rgba(255, 255, 255, 0.14);
+            border: 3px solid var(--gold-light);
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.35rem;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.32);
+            padding: 8px;
+        }
+
+        .cover-pill {
+            background: rgba(251, 191, 36, 0.18);
+            border: 1px solid var(--gold-light);
+            color: var(--gold-light);
+            padding: 0.35rem 1rem;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .cover-title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+            color: #ffffff;
+        }
+
+        .cover-desc {
+            font-size: 1.02rem;
+            color: #ede9fe;
+            max-width: 580px;
+            margin-bottom: 1.75rem;
+        }
+
+        .cover-meta-card {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: var(--radius-md);
+            padding: 0.9rem 1.4rem;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: #f5f3ff;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem 1.5rem;
+        }
+
+        .btn-start-cover {
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 100%);
+            color: #2e1065;
+            border: none;
+            padding: 1.05rem 2.25rem;
+            border-radius: 999px;
+            font-size: 1.08rem;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(217, 119, 6, 0.45);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+
+        .btn-start-cover:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 28px rgba(251, 191, 36, 0.55);
+        }
+
+        .cover-footer {
+            padding: 1rem;
+            font-size: 0.8rem;
+            color: #ddd6fe;
+            opacity: 0.9;
+        }
+
+        /* ==========================================================================
+           HEADER & IDENTITAS MADRASAH
+           ========================================================================== */
+        header {
+            background: linear-gradient(135deg, var(--emerald-dark) 0%, var(--emerald-primary) 100%);
+            color: #ffffff;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 4px solid var(--gold-light);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-container {
+            max-width: 1120px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .brand-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.14);
+            border: 2px solid var(--gold-light);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .brand-title h1 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: 0.2px;
+            line-height: 1.25;
+        }
+
+        .brand-subtitle {
+            font-size: 0.8rem;
+            color: #d1fae5;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.2rem;
+        }
+
+        .offline-badge {
+            background-color: var(--gold-primary);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.15rem 0.55rem;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ==========================================================================
+           BAR SKOR KOMPETISI KELOMPOK (GAMIFIKASI KINESTETIK)
+           ========================================================================== */
+        .team-bar {
+            background: rgba(0, 0, 0, 0.22);
+            padding: 0.5rem 0.9rem;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(251, 191, 36, 0.35);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .team-select-group {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+        }
+
+        .btn-cover-nav {
+            background: #ffffff;
+            color: var(--emerald-dark);
+            font-weight: 800;
+            border: 2px solid var(--gold-light);
+            border-radius: 8px;
+            padding: 0.35rem 0.85rem;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .btn-cover-nav:hover {
+            background: var(--gold-light);
+            color: var(--emerald-dark);
+            transform: translateY(-1px);
+        }
+
+        .xp-pill {
+            background: var(--gold-light);
+            color: var(--emerald-dark);
+            font-weight: 800;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        /* ==========================================================================
+           NAVIGASI MODULAR (TAB BESAR RAMAH SENTUHAN)
+           ========================================================================== */
+        .nav-wrapper {
+            max-width: 1120px;
+            width: 100%;
+            margin: 1.25rem auto 0;
+            padding: 0 1rem;
+        }
+
+        .module-nav {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.65rem;
+            background: var(--surface);
+            padding: 0.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .nav-btn {
+            background: #fef08a;
+            border: 2px solid #facc15;
+            border-radius: var(--radius-md);
+            padding: 0.85rem 0.65rem;
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #ffffff;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.35rem;
+            text-align: center;
+            min-height: 68px;
+        }
+
+        /* Modul 1: Merah */
+        #tabBtn1 {
+            background: #ef4444;
+            border-color: #dc2626;
+            color: #ffffff;
+        }
+        #tabBtn1:hover {
+            background: #dc2626;
+            border-color: #b91c1c;
+        }
+        #tabBtn1.active {
+            background: #b91c1c;
+            border-color: #7f1d1d;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+        }
+
+        /* Modul 2: Jingga */
+        #tabBtn2 {
+            background: #f59e0b;
+            border-color: #d97706;
+            color: #ffffff;
+        }
+        #tabBtn2:hover {
+            background: #d97706;
+            border-color: #b45309;
+        }
+        #tabBtn2.active {
+            background: #b45309;
+            border-color: #78350f;
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.4);
+        }
+
+        /* Modul 3: Hijau Sage */
+        #tabBtn3 {
+            background: #84a98c;
+            border-color: #52796f;
+            color: #ffffff;
+        }
+        #tabBtn3:hover {
+            background: #6b9080;
+            border-color: #354f52;
+        }
+        #tabBtn3.active {
+            background: #52796f;
+            border-color: #2f3e46;
+            box-shadow: 0 4px 12px rgba(82, 121, 111, 0.45);
+        }
+
+        /* Modul 4: Orange */
+        #tabBtn4 {
+            background: #f97316;
+            border-color: #ea580c;
+            color: #ffffff;
+        }
+        #tabBtn4:hover {
+            background: #ea580c;
+            border-color: #c2410c;
+        }
+        #tabBtn4.active {
+            background: #c2410c;
+            border-color: #7c2d12;
+            box-shadow: 0 4px 12px rgba(234, 88, 12, 0.4);
+        }
+
+        .nav-btn .step-tag {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            opacity: 0.92;
+        }
+
+        .nav-btn:hover {
+            background: #fde047;
+            border-color: #eab308;
+            color: #422006;
+        }
+
+        .nav-btn.active {
+            background: #facc15;
+            color: #422006;
+            border-color: #ca8a04;
+            box-shadow: 0 4px 12px rgba(202, 138, 4, 0.35);
+        }
+
+        .nav-btn .step-tag {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            opacity: 0.85;
+        }
+
+        /* ==========================================================================
+           KONTAINER UTAMA & KARTU MODUL
+           ========================================================================== */
+        main {
+            max-width: 1120px;
+            width: 100%;
+            margin: 1.25rem auto 2.5rem;
+            padding: 0 1rem;
+            flex: 1;
+        }
+
+        .module-section {
+            display: none;
+            animation: fadeIn 0.35s ease;
+        }
+
+        .module-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 1.65rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            margin-bottom: 1.25rem;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.15rem;
+            padding-bottom: 0.85rem;
+            border-bottom: 2px solid var(--emerald-soft);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--emerald-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .badge-gold {
+            background: var(--gold-soft);
+            color: var(--gold-dark);
+            border: 1px solid var(--gold-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* ==========================================================================
+           MODUL 1: RINGKASAN MATERI & DALIL KONTEKSTUAL
+           ========================================================================== */
+        .hero-context {
+            background: linear-gradient(135deg, var(--emerald-soft) 0%, var(--gold-soft) 100%);
+            border-left: 5px solid var(--emerald-primary);
+            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-context h3 {
+            color: var(--emerald-dark);
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 1.15rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .concept-card {
+            background: var(--surface);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.35rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .concept-card:hover {
+            border-color: var(--emerald-primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .concept-card.iman { border-top: 6px solid var(--emerald-dark); }
+        .concept-card.islam { border-top: 6px solid var(--emerald-light); }
+        .concept-card.ihsan { border-top: 6px solid var(--gold-primary); }
+
+        .concept-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 0.2rem 0.65rem;
+            border-radius: 6px;
+            margin-bottom: 0.6rem;
+        }
+
+        .iman .concept-tag { background: #d1fae5; color: var(--emerald-dark); }
+        .islam .concept-tag { background: #ccfbf1; color: #0f766e; }
+        .ihsan .concept-tag { background: var(--gold-soft); color: var(--gold-dark); }
+
+        .concept-card h4 {
+            font-size: 1.2rem;
+            color: var(--slate-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .pillar-list {
+            margin-top: 0.85rem;
+            padding-left: 1.15rem;
+            font-size: 0.92rem;
+        }
+
+        .pillar-list li {
+            margin-bottom: 0.3rem;
+        }
+
+        .local-example-box {
+            margin-top: 0.9rem;
+            background: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            padding: 0.75rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.88rem;
+        }
+
+        .local-example-box strong {
+            color: var(--emerald-primary);
+        }
+
+        /* ==========================================================================
+           MODUL 2: SIMULASI INTERAKTIF "ARSITEK RUMAH AKIDAH" (SLIDER & MANIPULASI)
+           ========================================================================== */
+        .sim-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .house-canvas-box {
+            background: linear-gradient(180deg, #e0f2fe 0%, #f0fdf4 75%, #dcfce7 100%);
+            border: 2px solid #bae6fd;
+            border-radius: var(--radius-lg);
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 360px;
+            position: relative;
+        }
+
+        .controls-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+
+        .slider-group {
+            background: var(--bg-main);
+            padding: 1rem 1.15rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .slider-label-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 0.98rem;
+        }
+
+        .slider-val {
+            background: var(--emerald-primary);
+            color: #fff;
+            padding: 0.15rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 12px;
+            border-radius: 6px;
+            background: #cbd5e1;
+            outline: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--gold-primary);
+            border: 3px solid #ffffff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+            cursor: pointer;
+        }
+
+        .preset-btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .preset-btn {
+            background: var(--surface);
+            border: 1.5px solid var(--emerald-primary);
+            color: var(--emerald-primary);
+            padding: 0.55rem 0.85rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.84rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .preset-btn:hover {
+            background: var(--emerald-primary);
+            color: #fff;
+        }
+
+        .diagnostic-dialog {
+            margin-top: 1.25rem;
+            padding: 1.15rem 1.35rem;
+            border-radius: var(--radius-md);
+            border-left: 6px solid var(--emerald-primary);
+            background: var(--emerald-soft);
+            transition: var(--transition);
+        }
+
+        .diagnostic-dialog.warning {
+            border-left-color: var(--gold-primary);
+            background: var(--gold-soft);
+        }
+
+        .diagnostic-dialog.danger {
+            border-left-color: var(--danger);
+            background: var(--danger-soft);
+        }
+
+        .diagnostic-title {
+            font-weight: 800;
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+            color: var(--slate-dark);
+        }
+
+        /* ==========================================================================
+           MODUL 3: LABORATORIUM KINESTETIK (DRAG & DROP + TAP-TO-PLACE)
+           ========================================================================== */
+        .kinesthetic-instructions {
+            background: var(--info-soft);
+            border: 1px solid #bae6fd;
+            color: #0369a1;
+            padding: 0.85rem 1rem;
+            border-radius: var(--radius-md);
+            font-size: 0.92rem;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+
+        .scenario-pool {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0.85rem;
+            margin-bottom: 1.5rem;
+            min-height: 90px;
+            padding: 1rem;
+            background: #f1f5f9;
+            border-radius: var(--radius-md);
+            border: 2px dashed #94a3b8;
+        }
+
+        .drag-item {
+            background: #ffffff;
+            border: 2px solid var(--emerald-primary);
+            border-radius: var(--radius-md);
+            padding: 0.9rem 1rem;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--slate-dark);
+            cursor: grab;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            user-select: none;
+            position: relative;
+        }
+
+        .drag-item:active {
+            cursor: grabbing;
+        }
+
+        .drag-item.selected {
+            border-color: var(--gold-primary);
+            background: var(--gold-soft);
+            box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.25);
+            transform: scale(1.02);
+        }
+
+        .drag-item .region-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--emerald-primary);
+            background: var(--emerald-soft);
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
+            margin-bottom: 0.35rem;
+        }
+
+        .drop-zones-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .drop-zone {
+            background: var(--surface);
+            border: 2.5px dashed #cbd5e1;
+            border-radius: var(--radius-lg);
+            padding: 1.15rem;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .drop-zone:hover, .drop-zone.drag-over {
+            border-color: var(--gold-primary);
+            background: var(--gold-soft);
+        }
+
+        .drop-zone-header {
+            text-align: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .drop-zone-header h4 {
+            font-size: 1.1rem;
+            color: var(--emerald-dark);
+        }
+
+        .drop-zone-header p {
+            font-size: 0.8rem;
+            color: var(--slate-muted);
+        }
+
+        .dropped-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            flex: 1;
+        }
+
+        .placed-badge {
+            background: var(--emerald-soft);
+            border: 1px solid var(--emerald-light);
+            color: var(--emerald-dark);
+            padding: 0.65rem 0.8rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.86rem;
+            font-weight: 600;
+        }
+
+        /* ==========================================================================
+           DIALOG UMPAN BALIK EDUKATIF (REAL-TIME GUIDANCE BOX)
+           ========================================================================== */
+        .pedagogical-feedback {
+            margin-top: 1.25rem;
+            padding: 1.15rem 1.35rem;
+            border-radius: var(--radius-md);
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .pedagogical-feedback.show {
+            display: block;
+        }
+
+        .pedagogical-feedback.success {
+            background: var(--emerald-soft);
+            border: 2px solid var(--emerald-light);
+            color: var(--emerald-dark);
+        }
+
+        .pedagogical-feedback.hint {
+            background: var(--gold-soft);
+            border: 2px solid var(--gold-light);
+            color: #78350f;
+        }
+
+        /* ==========================================================================
+           MODUL 4: KUIS FORMATIF INTERAKTIF & PEMBAHASAN OTOMATIS
+           ========================================================================== */
+        .quiz-progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 999px;
+            overflow: hidden;
+            margin-bottom: 1.25rem;
+        }
+
+        .quiz-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--emerald-primary), var(--gold-primary));
+            width: 20%;
+            transition: width 0.35s ease;
+        }
+
+        .question-box {
+            background: var(--bg-main);
+            padding: 1.35rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 1.15rem;
+        }
+
+        .question-meta {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--gold-dark);
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+
+        .question-text {
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: var(--slate-dark);
+        }
+
+        .options-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .option-btn {
+            background: var(--surface);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1rem 1.15rem;
+            text-align: left;
+            font-size: 0.96rem;
+            font-weight: 600;
+            color: var(--slate-text);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            border-color: var(--emerald-primary);
+            background: var(--emerald-soft);
+        }
+
+        .option-btn.correct {
+            border-color: var(--emerald-primary);
+            background: #d1fae5;
+            color: var(--emerald-dark);
+        }
+
+        .option-btn.wrong {
+            border-color: var(--danger);
+            background: var(--danger-soft);
+            color: #991b1b;
+        }
+
+        .opt-letter {
+            background: var(--emerald-soft);
+            color: var(--emerald-dark);
+            font-weight: 800;
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .explanation-card {
+            margin-top: 1.15rem;
+            padding: 1.15rem;
+            border-radius: var(--radius-md);
+            background: #f0fdf4;
+            border-left: 5px solid var(--emerald-primary);
+            display: none;
+        }
+
+        .explanation-card.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* ==========================================================================
+           TOMBOL AKSI UTAMA
+           ========================================================================== */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--emerald-primary), var(--emerald-dark));
+            color: #ffffff;
+            border: none;
+            padding: 0.9rem 1.5rem;
+            border-radius: var(--radius-md);
+            font-size: 0.98rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 12px rgba(4, 120, 87, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(4, 120, 87, 0.35);
+        }
+
+        .btn-secondary {
+            background: var(--gold-soft);
+            color: var(--gold-dark);
+            border: 2px solid var(--gold-light);
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius-md);
+            font-size: 0.92rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold-light);
+            color: var(--emerald-dark);
+        }
+
+        /* Variasi Warna Elegan Tombol Info Modul 1 */
+        .btn-info-pill {
+            padding: 0.4rem 0.9rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
+        }
+
+        .btn-info-pill:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.12);
+        }
+
+        .btn-pill-sapphire {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #ffffff;
+            border: 1.5px solid #047857;
+            box-shadow: 0 3px 10px rgba(16, 185, 129, 0.35);
+        }
+
+        .btn-pill-sapphire:hover {
+            background: #047857;
+            color: #ffffff;
+            box-shadow: 0 5px 14px rgba(16, 185, 129, 0.5);
+        }
+
+        .btn-pill-amber {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: #ffffff;
+            border: 1.5px solid #b91c1c;
+            box-shadow: 0 3px 10px rgba(239, 68, 68, 0.35);
+        }
+
+        .btn-pill-amber:hover {
+            background: #b91c1c;
+            color: #ffffff;
+            box-shadow: 0 5px 14px rgba(239, 68, 68, 0.5);
+        }
+
+        .btn-pill-emerald {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: #ffffff;
+            border: 1.5px solid #1d4ed8;
+            box-shadow: 0 3px 10px rgba(59, 130, 246, 0.35);
+        }
+
+        .btn-pill-emerald:hover {
+            background: #1d4ed8;
+            color: #ffffff;
+            box-shadow: 0 5px 14px rgba(59, 130, 246, 0.5);
+        }
+
+        /* Variasi Warna Cerah untuk Tombol Sub-Materi Islam */
+        .btn-pill-yellow-bright {
+            background: linear-gradient(135deg, #fef08a 0%, #facc15 100%);
+            color: #422006;
+            border: 1.5px solid #eab308;
+            box-shadow: 0 3px 10px rgba(250, 204, 21, 0.4);
+        }
+        .btn-pill-yellow-bright:hover {
+            background: #eab308;
+            color: #ffffff;
+        }
+
+        .btn-pill-purple-bright {
+            background: linear-gradient(135deg, #c084fc 0%, #9333ea 100%);
+            color: #ffffff;
+            border: 1.5px solid #7e22ce;
+            box-shadow: 0 3px 10px rgba(168, 85, 247, 0.4);
+        }
+        .btn-pill-purple-bright:hover {
+            background: #7e22ce;
+            color: #ffffff;
+        }
+
+        .btn-pill-gray-bright {
+            background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+            color: #0f172a;
+            border: 1.5px solid #64748b;
+            box-shadow: 0 3px 10px rgba(148, 163, 184, 0.4);
+        }
+        .btn-pill-gray-bright:hover {
+            background: #64748b;
+            color: #ffffff;
+        }
+
+        .btn-pill-green-bright {
+            background: linear-gradient(135deg, #4ade80 0%, #16a34a 100%);
+            color: #ffffff;
+            border: 1.5px solid #15803d;
+            box-shadow: 0 3px 10px rgba(34, 197, 94, 0.4);
+        }
+        .btn-pill-green-bright:hover {
+            background: #15803d;
+            color: #ffffff;
+        }
+
+        .action-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        /* ==========================================================================
+           HASIL AKHIR KUIS & REVIEW LENGKAP
+           ========================================================================== */
+        .score-summary-box {
+            text-align: center;
+            padding: 2rem 1.25rem;
+            background: linear-gradient(135deg, var(--emerald-dark), var(--emerald-primary));
+            color: #ffffff;
+            border-radius: var(--radius-lg);
+            margin-bottom: 1.5rem;
+        }
+
+        .big-score {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: var(--gold-light);
+            line-height: 1.1;
+            margin: 0.5rem 0;
+        }
+
+        .review-item {
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.15rem;
+            margin-bottom: 0.85rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.25rem;
+            font-size: 0.82rem;
+            color: var(--slate-muted);
+            border-top: 1px solid var(--border-color);
+            background: var(--surface);
+        }
+
+        /* ==========================================================================
+           RESPONSIVITAS MOBILE & TABLET
+           ========================================================================== */
+        @media (max-width: 860px) {
+            .sim-layout {
+                grid-template-columns: 1fr;
+            }
+            .drop-zones-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .module-nav {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .brand-title h1 {
+                font-size: 1rem;
+            }
+            .card {
+                padding: 1.15rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ======================================================================
+         COVER PEMBUKA MPI & TEKS BERJALAN (100% OFFLINE)
+         ====================================================================== -->
+    <div id="coverOverlay" class="cover-overlay" role="dialog" aria-modal="true" aria-label="Halaman Sampul Pembelajaran">
+        <div class="running-text-bar">
+            <div class="running-text-track">
+                ✨ Selamat datang di MTs Negeri 3 Kab. Gorontalo • Media Pembelajaran Interaktif (MPI) Akidah Akhlak Kelas VIII Fase D • Madrasah Mandiri Berprestasi ✨
+            </div>
+        </div>
+
+        <div class="cover-content">
+            <div class="cover-emblem" aria-label="Logo Kementerian Agama Republik Indonesia">
+                <!-- Ilustrasi SVG Mandiri Logo Kementerian Agama RI (100% Offline) -->
+                <svg width="92" height="92" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo Kemenag RI">
+                    <!-- Perisai Segi Lima Hijau Tua dengan Bingkai Emas -->
+                    <polygon points="60,6 112,42 92,110 28,110 8,42" fill="#064e3b" stroke="#fbbf24" stroke-width="4.5" stroke-linejoin="round"/>
+                    <polygon points="60,12 105,44 87,104 33,104 15,44" fill="none" stroke="#fde68a" stroke-width="1.2" stroke-linejoin="round"/>
+
+                    <!-- Bintang Bersudut Lima (Ketuhanan Yang Maha Esa) -->
+                    <polygon points="60,19 63.5,29 74,29 65.5,35.5 68.5,45.5 60,39.5 51.5,45.5 54.5,35.5 46,29 56.5,29" fill="#fbbf24"/>
+
+                    <!-- Tangkai Padi (Kiri) -->
+                    <path d="M44,86 C26,74 22,52 34,36" fill="none" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round"/>
+                    <ellipse cx="29" cy="44" rx="3" ry="5.5" transform="rotate(-35 29 44)" fill="#fbbf24"/>
+                    <ellipse cx="26" cy="54" rx="3" ry="5.5" transform="rotate(-20 26 54)" fill="#fbbf24"/>
+                    <ellipse cx="27" cy="65" rx="3" ry="5.5" transform="rotate(10 27 65)" fill="#fbbf24"/>
+                    <ellipse cx="33" cy="75" rx="3" ry="5.5" transform="rotate(30 33 75)" fill="#fbbf24"/>
+
+                    <!-- Tangkai Kapas (Kanan) -->
+                    <path d="M76,86 C94,74 98,52 86,36" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"/>
+                    <circle cx="91" cy="44" r="4.2" fill="#ffffff" stroke="#22c55e" stroke-width="1.5"/>
+                    <circle cx="94" cy="54" r="4.2" fill="#ffffff" stroke="#22c55e" stroke-width="1.5"/>
+                    <circle cx="93" cy="65" r="4.2" fill="#ffffff" stroke="#22c55e" stroke-width="1.5"/>
+                    <circle cx="87" cy="75" r="4.2" fill="#ffffff" stroke="#22c55e" stroke-width="1.5"/>
+
+                    <!-- Kitab Suci Terbuka & Penyangga -->
+                    <path d="M40,56 Q50,51 60,57 Q70,51 80,56 L80,72 Q70,67 60,73 Q50,67 40,72 Z" fill="#ffffff" stroke="#fbbf24" stroke-width="1.8"/>
+                    <line x1="60" y1="57" x2="60" y2="73" stroke="#064e3b" stroke-width="1.5"/>
+                    <line x1="44" y1="61" x2="56" y2="60" stroke="#94a3b8" stroke-width="1.2"/>
+                    <line x1="44" y1="65" x2="56" y2="64" stroke="#94a3b8" stroke-width="1.2"/>
+                    <line x1="64" y1="60" x2="76" y2="61" stroke="#94a3b8" stroke-width="1.2"/>
+                    <line x1="64" y1="64" x2="76" y2="65" stroke="#94a3b8" stroke-width="1.2"/>
+
+                    <!-- Pita Motto "IKHLAS BERAMAL" -->
+                    <rect x="26" y="84" width="68" height="14" rx="4" fill="#fbbf24" stroke="#92400e" stroke-width="1.2"/>
+                    <text x="60" y="93.5" text-anchor="middle" fill="#064e3b" font-size="6.8" font-weight="900" letter-spacing="0.4">IKHLAS BERAMAL</text>
+                </svg>
+            </div>
+
+            <div class="cover-pill">Kementerian Agama Republik Indonesia</div>
+            <h1 class="cover-title">Akidah Islam: Iman, Islam, dan Ihsan</h1>
+            <p class="cover-desc">
+                Eksplorasi Modular Interaktif Berbasis Konteks Pesisir & Agraris Gorontalo untuk Membangun Pondasi Keyakinan, Ketaatan Ibadah, dan Akhlak Mulia.
+            </p>
+
+            <div class="cover-meta-card">
+                <span>🏫 <strong>Madrasah:</strong> MTs Negeri 3 Kab. Gorontalo</span>
+                <span>📚 <strong>Mapel:</strong> Akidah Akhlak (Kelas VIII / Fase D)</span>
+                <span>⚡ <strong>Akses:</strong> 100% Luring (Offline)</span>
+            </div>
+
+            <button class="btn-start-cover" onclick="enterLearningApp()">
+                <span>Mulai Eksplorasi Belajar</span>
+                <span>→</span>
+            </button>
+        </div>
+
+        <div class="cover-footer">
+            Kanwil Kementerian Agama Provinsi Gorontalo • MTs Negeri 3 Kab. Gorontalo
+        </div>
+    </div>
+
+    <!-- ======================================================================
+         TEKS BERJALAN DI HALAMAN UTAMA & HEADER MADRASAH
+         ====================================================================== -->
+    <div class="running-text-bar in-app">
+        <div class="running-text-track">
+            🕌 Selamat datang di MTs Negeri 3 Kab. Gorontalo — Mari Mengokohkan Iman, Menegakkan Islam, dan Menyempurnakan Ihsan dalam Kehidupan Sehari-hari 🕌
+        </div>
+    </div>
+
+    <header>
+        <div class="header-container">
+            <div class="brand-box">
+                <div class="brand-icon" aria-hidden="true">
+                    <!-- Ikon Kubah & Bintang Segi Delapan Islami (Inline SVG) -->
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L14.8 5.2L19 5L18.8 9.2L22 12L18.8 14.8L19 19L14.8 18.8L12 22L9.2 18.8L5 19L5.2 14.8L2 12L5.2 9.2L5 5L9.2 5.2L12 2Z"/>
+                        <circle cx="12" cy="12" r="3.5" fill="#fbbf24"/>
+                    </svg>
+                </div>
+                <div class="brand-title">
+                    <h1>Akidah Islam: Iman, Islam, dan Ihsan</h1>
+                    <div class="brand-subtitle">
+                        <span>MTsN 3 Kab. Gorontalo • Akidah Akhlak Kelas VIII (Fase D)</span>
+                        <span class="offline-badge">Mode Luring 100%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bar Navigasi Cover & Poin -->
+            <div class="team-bar">
+                <button type="button" class="btn-cover-nav" onclick="showCoverOverlay()" aria-label="Kembali ke Halaman Cover">
+                    <span>🏠</span>
+                    <span>Cover</span>
+                </button>
+                <div class="xp-pill" id="xpDisplay">
+                    <span>★ Poin Akidah:</span>
+                    <span id="xpScore">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ======================================================================
+         NAVIGASI MODULAR EKSPLORATIF
+         ====================================================================== -->
+    <div class="nav-wrapper">
+        <nav class="module-nav" aria-label="Navigasi Modul Pembelajaran">
+            <button class="nav-btn active" onclick="switchModule(1)" id="tabBtn1">
+                <span class="step-tag">Modul 1</span>
+                <span>Peta Konsep & Dalil</span>
+            </button>
+            <button class="nav-btn" onclick="switchModule(2)" id="tabBtn2">
+                <span class="step-tag">Modul 2</span>
+                <span>Simulasi Rumah Akidah</span>
+            </button>
+            <button class="nav-btn" onclick="switchModule(3)" id="tabBtn3">
+                <span class="step-tag">Modul 3</span>
+                <span>Lab Kasus Gorontalo</span>
+            </button>
+            <button class="nav-btn" onclick="switchModule(4)" id="tabBtn4">
+                <span class="step-tag">Modul 4</span>
+                <span>Kuis Evaluasi (5 Soal)</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- ======================================================================
+         KONTEN UTAMA MODULAR
+         ====================================================================== -->
+    <main>
+        <!-- ==================================================================
+             MODUL 1: RINGKASAN MATERI PADAT & KONTEKSTUAL
+             ================================================================== -->
+        <section id="module1" class="module-section active">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <span>📖</span> Memahami Trilogi Ajaran Islam: Iman, Islam, dan Ihsan
+                    </h2>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                        <button type="button" class="btn-info-pill btn-pill-sapphire" onclick="toggleInfoPanel('pengertianAkidahBox')">
+                            📘 Pengertian Akidah (Bahasa & Istilah)
+                        </button>
+                        <button type="button" class="btn-info-pill btn-pill-amber" onclick="toggleInfoPanel('dasarAkidahBox')">
+                            📜 Dasar Akidah Islam
+                        </button>
+                        <button type="button" class="btn-info-pill btn-pill-emerald" onclick="toggleInfoPanel('tujuanAkidahBox')">
+                            🎯 Tujuan Akidah Islam
+                        </button>
+                        <span class="badge-gold">Capaian Belajar Fase D</span>
+                    </div>
+                </div>
+
+                <!-- Panel Interaktif Pengertian Akidah Secara Bahasa & Istilah -->
+                <div id="pengertianAkidahBox" class="info-toggle-panel" style="display: none; background: var(--info-soft); border: 2px solid #bae6fd; border-radius: var(--radius-md); padding: 1.15rem 1.35rem; margin-bottom: 1.25rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <h3 style="color: #0369a1; font-size: 1.05rem;">📘 Pengertian Akidah Islam (Secara Bahasa & Istilah)</h3>
+                        <button type="button" onclick="toggleInfoPanel('pengertianAkidahBox')" style="background: none; border: none; color: #0369a1; font-weight: 800; cursor: pointer; font-size: 1rem;">✕</button>
+                    </div>
+                    <ul class="pillar-list" style="margin-top: 0.35rem;">
+                        <li><strong>Secara Bahasa (Etimologi):</strong> Kata <em>Akidah</em> berasal dari bahasa Arab <em>‘aqada – ya‘qidu – ‘aqdan – ‘aqīdatan</em> yang berarti <strong>ikatan, sangkutan, perjanjian, atau simpul yang kokoh</strong>.</li>
+                        <li><strong>Secara Istilah (Terminologi):</strong> Akidah Islam adalah pokok-pokok kepercayaan atau keyakinan yang wajib diyakini kebenarannya secara pasti oleh setiap muslim di dalam hati, tanpa sedikit pun keraguan, sesuai dengan petunjuk Al-Qur'an dan Hadis sahih (meliputi keimanan kepada Allah, malaikat-malaikat-Nya, kitab-kitab-Nya, rasul-rasul-Nya, hari akhir, serta qada dan qadar).</li>
+                    </ul>
+                </div>
+
+                <!-- Panel Interaktif Dasar Akidah Islam -->
+                <div id="dasarAkidahBox" class="info-toggle-panel" style="display: none; background: var(--gold-soft); border: 2px solid var(--gold-light); border-radius: var(--radius-md); padding: 1.15rem 1.35rem; margin-bottom: 1.25rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <h3 style="color: var(--gold-dark); font-size: 1.05rem;">📜 Dasar Hukum Akidah Islam</h3>
+                        <button type="button" onclick="toggleInfoPanel('dasarAkidahBox')" style="background: none; border: none; color: var(--gold-dark); font-weight: 800; cursor: pointer; font-size: 1rem;">✕</button>
+                    </div>
+                    <p style="font-size: 0.92rem; margin-bottom: 0.5rem;">Akidah Islam bersumber pada dua dasar utama (Dalil Naqli) yang mutlak kebenarannya:</p>
+                    <ul class="pillar-list" style="margin-top: 0.35rem;">
+                        <li><strong>1. Al-Qur'an Al-Karim:</strong> Firman Allah Swt. yang diwahyukan kepada Nabi Muhammad ﷺ sebagai pedoman utama keyakinan umat Islam. Contohnya terdapat dalam <strong>Q.S. Al-Ikhlas [112]: 1–4</strong> tentang keesaan Allah Swt. dan <strong>Q.S. Al-Baqarah [2]: 285</strong> tentang pokok-pokok keimanan.</li>
+                        <li><strong>2. As-Sunnah / Al-Hadis:</strong> Segala perkataan, perbuatan, dan ketetapan Rasulullah ﷺ yang menjelaskan rincian ajaran Al-Qur'an, seperti <strong>Hadis Jibril (HR. Muslim)</strong> yang menerangkan Rukun Iman, Rukun Islam, dan Ihsan secara jelas.</li>
+                    </ul>
+                </div>
+
+                <!-- Panel Interaktif Tujuan Akidah Islam -->
+                <div id="tujuanAkidahBox" class="info-toggle-panel" style="display: none; background: var(--emerald-soft); border: 2px solid var(--emerald-light); border-radius: var(--radius-md); padding: 1.15rem 1.35rem; margin-bottom: 1.25rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <h3 style="color: var(--emerald-dark); font-size: 1.05rem;">🎯 Tujuan Mempelajari Akidah Islam</h3>
+                        <button type="button" onclick="toggleInfoPanel('tujuanAkidahBox')" style="background: none; border: none; color: var(--emerald-dark); font-weight: 800; cursor: pointer; font-size: 1rem;">✕</button>
+                    </div>
+                    <ul class="pillar-list" style="margin-top: 0.35rem;">
+                        <li><strong>Memupuk dan mengembangkan dasar ketuhanan</strong> yang sejati sejak dini agar keyakinan murid kokoh kepada Allah Swt.</li>
+                        <li><strong>Menghindarkan diri dari kemusyrikan, khurafat, dan takhayul</strong> yang dapat merusak kemurnian tauhid dalam kehidupan sehari-hari.</li>
+                        <li><strong>Menjadi pedoman dan landasan moral (akhlak)</strong> dalam beribadah (Islam) dan berbuat kebaikan (Ihsan) di lingkungan madrasah maupun masyarakat.</li>
+                        <li><strong>Meraih ketenangan batin serta kebahagiaan hidup</strong> di dunia dan keselamatan di akhirat.</li>
+                    </ul>
+                </div>
+
+                <div class="hero-context">
+                    <h3>Hikmah dari Alam Pesisir & Pertanian Gorontalo</h3>
+                    <p>
+                        Bayangkan sebuah pohon kelapa di pesisir pantai Biluhu atau tanaman jagung subur di ladang Tibawa. 
+                        Agar tumbuh kokoh dan berbuah lebat, ia membutuhkan <strong>akar yang menghunjam kuat ke tanah (Iman)</strong>, 
+                        <strong>batang dan daun yang tampak nyata (Islam)</strong>, serta <strong>kualitas buah yang manis dan bermanfaat (Ihsan)</strong>. 
+                        Ketiganya merupakan satu kesatuan utuh dalam Akidah Islam yang dijelaskan Rasulullah ﷺ dalam Hadis Jibril (HR. Muslim).
+                    </p>
+                </div>
+
+                <div class="concept-grid">
+                    <!-- Kartu 1: IMAN -->
+                    <article class="concept-card iman">
+                        <span class="concept-tag">Dimensi Batin / Keyakinan</span>
+                        <h4>1. IMAN (Pondasi Akidah)</h4>
+
+                        <!-- Tombol Eksplorasi Sub-Materi Iman -->
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.65rem 0 0.85rem;">
+                            <button type="button" class="btn-info-pill btn-pill-sapphire" style="font-size: 0.75rem; padding: 0.3rem 0.65rem;" onclick="toggleImanTab('iman-pengertian', this)">Pengertian Iman</button>
+                            <button type="button" class="btn-info-pill btn-pill-amber" style="font-size: 0.75rem; padding: 0.3rem 0.65rem;" onclick="toggleImanTab('iman-dalil', this)">Dalil</button>
+                            <button type="button" class="btn-info-pill btn-pill-emerald" style="font-size: 0.75rem; padding: 0.3rem 0.65rem;" onclick="toggleImanTab('iman-rukun', this)">Enam Rukun Iman</button>
+                            <button type="button" class="btn-info-pill btn-pill-sapphire" style="font-size: 0.75rem; padding: 0.3rem 0.65rem;" onclick="toggleImanTab('iman-ciri', this)">Ciri-Ciri Orang Beriman</button>
+                            <button type="button" class="btn-info-pill btn-pill-amber" style="font-size: 0.75rem; padding: 0.3rem 0.65rem;" onclick="toggleImanTab('iman-hikmah', this)">Hikmah Beriman</button>
+                        </div>
+
+                        <!-- Konten 1: Pengertian Iman -->
+                        <div id="iman-pengertian" class="iman-sub-panel">
+                            <p>
+                                <strong>Secara Bahasa:</strong> Percaya atau membenarkan (<em>tashdiq</em>) dengan penuh ketenangan hati.<br>
+                                <strong>Secara Istilah:</strong> Meyakini dengan sepenuh hati, mengucapkan dengan lisan, dan membuktikan dengan amal perbuatan terhadap enam rukun iman.
+                            </p>
+                        </div>
+
+                        <!-- Konten 2: Dalil Iman -->
+                        <div id="iman-dalil" class="iman-sub-panel" style="display: none;">
+                            <p style="font-size: 0.9rem;">
+                                <strong>Q.S. Al-Baqarah [2]: 285:</strong><br>
+                                <em>"Rasul (Muhammad) beriman kepada apa yang diturunkan kepadanya (Al-Qur'an) dari Tuhannya, demikian pula orang-orang yang beriman. Semua beriman kepada Allah, malaikat-malaikat-Nya, kitab-kitab-Nya, dan rasul-rasul-Nya..."</em>
+                            </p>
+                        </div>
+
+                        <!-- Konten 3: Enam Rukun Iman -->
+                        <div id="iman-rukun" class="iman-sub-panel" style="display: none;">
+                            <strong style="font-size: 0.9rem; color: var(--emerald-dark);">Enam Rukun Iman yang Wajib Diyakini:</strong>
+                            <ul class="pillar-list" style="margin-top: 0.4rem;">
+                                <li>Iman kepada Allah Swt.</li>
+                                <li>Iman kepada Malaikat-malaikat Allah</li>
+                                <li>Iman kepada Kitab-kitab Allah</li>
+                                <li>Iman kepada Rasul-rasul Allah</li>
+                                <li>Iman kepada Hari Akhir (Kiamat)</li>
+                                <li>Iman kepada Qada dan Qadar</li>
+                            </ul>
+                        </div>
+
+                        <!-- Konten 4: Ciri-Ciri Orang Beriman -->
+                        <div id="iman-ciri" class="iman-sub-panel" style="display: none;">
+                            <strong style="font-size: 0.9rem; color: var(--emerald-dark);">Ciri-Ciri Orang Beriman (Q.S. Al-Anfal: 2–4):</strong>
+                            <ul class="pillar-list" style="margin-top: 0.4rem;">
+                                <li>Bergetar hatinya apabila disebut nama Allah Swt.</li>
+                                <li>Bertambah keimanannya apabila dibacakan ayat-ayat Al-Qur'an.</li>
+                                <li>Hanya bertawakal (berserah diri) kepada Allah Swt.</li>
+                                <li>Mendirikan salat dengan khusyuk dan menafkahkan sebagian rezekinya.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Konten 5: Hikmah Beriman -->
+                        <div id="iman-hikmah" class="iman-sub-panel" style="display: none;">
+                            <strong style="font-size: 0.9rem; color: var(--emerald-dark);">Hikmah & Manfaat Beriman:</strong>
+                            <ul class="pillar-list" style="margin-top: 0.4rem;">
+                                <li>Memberikan ketenangan jiwa dan optimisme dalam menghadapi ujian hidup.</li>
+                                <li>Membentengi diri dari perbuatan syirik, maksiat, dan putus asa.</li>
+                                <li>Menumbuhkan rasa syukur saat mendapat nikmat dan sabar saat ditimpa musibah.</li>
+                                <li>Mendorong semangat beramal saleh sebagai bekal kehidupan akhirat.</li>
+                            </ul>
+                        </div>
+
+                        <div class="local-example-box">
+                            <strong>Konteks Lokal:</strong> Nelayan di pesisir Gorontalo yakin sepenuhnya bahwa rezeki tangkapan ikan di laut telah diatur oleh Allah Swt. (Iman kepada Qada & Qadar), sehingga tetap bertawakal setelah berikhtiar.
+                        </div>
+                    </article>
+
+                    <!-- Kartu 2: ISLAM -->
+                    <article class="concept-card islam">
+                        <span class="concept-tag">Dimensi Lahiriah / Syariat</span>
+                        <h4>2. ISLAM (Wujud Ketaatan)</h4>
+
+                        <!-- Tombol Eksplorasi Sub-Materi Islam -->
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.65rem 0 0.85rem;">
+                            <button type="button" class="btn-info-pill btn-pill-yellow-bright" style="font-size: 0.75rem; padding: 0.3rem 0.65rem;" onclick="toggleIslamTab('islam-pengertian')">Pengertian</button>
+                            <button type="button" class="btn-info-pill btn-pill-purple-bright" style="font-size: 0.75rem; padding: 0.3rem 0.65rem;" onclick="toggleIslamTab('islam-dalil')">Dalil</button>
+                            <button type="button" class="btn-info-pill btn-pill-gray-bright" style="font-size: 0.75rem; padding: 0.3rem 0.65rem;" onclick="toggleIslamTab('islam-rukun')">Lima Rukun Islam</button>
+                            <button type="button" class="btn-info-pill btn-pill-green-bright" style="font-size: 0.75rem; padding: 0.3rem 0.65rem;" onclick="toggleIslamTab('islam-hikmah')">Hikmah Melaksanakan Rukun Islam</button>
+                        </div>
+
+                        <!-- Konten 1: Pengertian Islam -->
+                        <div id="islam-pengertian" class="islam-sub-panel">
+                            <p>
+                                <strong>Secara Bahasa:</strong> Tunduk, patuh, berserah diri, dan selamat.<br>
+                                <strong>Secara Istilah:</strong> Ketundukan lahiriah seorang hamba kepada aturan Allah Swt. melalui pelaksanaan lima rukun Islam secara nyata dalam kehidupan sehari-hari.
+                            </p>
+                        </div>
+
+                        <!-- Konten 2: Dalil Islam -->
+                        <div id="islam-dalil" class="islam-sub-panel" style="display: none;">
+                            <p style="font-size: 0.9rem;">
+                                <strong>Hadis Riwayat Bukhari & Muslim:</strong><br>
+                                <em>"Islam dibangun di atas lima perkara: bersaksi bahwa tidak ada Tuhan selain Allah dan Muhammad adalah utusan Allah, mendirikan salat, menunaikan zakat, berhaji ke Baitullah, dan berpuasa di bulan Ramadan."</em>
+                            </p>
+                        </div>
+
+                        <!-- Konten 3: Lima Rukun Islam -->
+                        <div id="islam-rukun" class="islam-sub-panel" style="display: none;">
+                            <strong style="font-size: 0.9rem; color: #0f766e;">Lima Rukun Islam yang Wajib Diamalkan:</strong>
+                            <ul class="pillar-list" style="margin-top: 0.4rem;">
+                                <li>Mengucapkan dua kalimat syahadat</li>
+                                <li>Mendirikan salat lima waktu</li>
+                                <li>Menunaikan zakat</li>
+                                <li>Berpuasa di bulan Ramadan</li>
+                                <li>Menunaikan ibadah haji bagi yang mampu</li>
+                            </ul>
+                        </div>
+
+                        <!-- Konten 4: Hikmah Melaksanakan Rukun Islam -->
+                        <div id="islam-hikmah" class="islam-sub-panel" style="display: none;">
+                            <strong style="font-size: 0.9rem; color: #0f766e;">Hikmah Melaksanakan Rukun Islam:</strong>
+                            <ul class="pillar-list" style="margin-top: 0.4rem;">
+                                <li>Menumbuhkan kedisiplinan waktu dan ketenangan jiwa melalui salat lima waktu.</li>
+                                <li>Menyucikan harta serta menumbuhkan kepedulian sosial lewat zakat.</li>
+                                <li>Melatih kesabaran, kejujuran, dan pengendalian hawa nafsu melalui puasa.</li>
+                                <li>Mempererat persaudaraan (ukhuwah Islamiyah) sesama umat Islam.</li>
+                            </ul>
+                        </div>
+
+                        <div class="local-example-box">
+                            <strong>Konteks Lokal:</strong> Petani jagung di Kabupaten Gorontalo mengeluarkan zakat hasil pertanian saat panen mencapai nisab sebagai wujud ketaatan pada Rukun Islam.
+                        </div>
+                    </article>
+
+                    <!-- Kartu 3: IHSAN -->
+                    <article class="concept-card ihsan">
+                        <span class="concept-tag">Dimensi Kualitas / Akhlak</span>
+                        <h4>3. IHSAN (Puncak Kesempurnaan)</h4>
+
+                        <!-- Tombol Eksplorasi Sub-Materi Ihsan -->
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.65rem 0 0.85rem;">
+                            <button type="button" class="btn-info-pill btn-pill-sapphire" style="font-size: 0.75rem; padding: 0.3rem 0.65rem;" onclick="toggleIhsanTab('ihsan-pengertian')">Pengertian</button>
+                            <button type="button" class="btn-info-pill btn-pill-amber" style="font-size: 0.75rem; padding: 0.3rem 0.65rem;" onclick="toggleIhsanTab('ihsan-dalil')">Dalil</button>
+                            <button type="button" class="btn-info-pill btn-pill-emerald" style="font-size: 0.75rem; padding: 0.3rem 0.65rem;" onclick="toggleIhsanTab('ihsan-macam')">Macam-Macam Ihsan</button>
+                            <button type="button" class="btn-info-pill btn-pill-purple-bright" style="font-size: 0.75rem; padding: 0.3rem 0.65rem;" onclick="toggleIhsanTab('ihsan-ciri')">Ciri Orang yang Memiliki Sifat Ihsan</button>
+                            <button type="button" class="btn-info-pill btn-pill-yellow-bright" style="font-size: 0.75rem; padding: 0.3rem 0.65rem;" onclick="toggleIhsanTab('ihsan-hikmah')">Hikmah Berperilaku Ihsan</button>
+                        </div>
+
+                        <!-- Konten 1: Pengertian Ihsan -->
+                        <div id="ihsan-pengertian" class="ihsan-sub-panel">
+                            <p>
+                                <strong>Secara Bahasa:</strong> Berbuat baik, berbakti, atau memperindah kualitas amal.<br>
+                                <strong>Secara Istilah:</strong> Beribadah kepada Allah Swt. seakan-akan melihat-Nya, dan jika tidak mampu melihat-Nya, yakinlah bahwa Allah selalu melihat kita (<em>Muraqabah</em>).
+                            </p>
+                        </div>
+
+                        <!-- Konten 2: Dalil Ihsan -->
+                        <div id="ihsan-dalil" class="ihsan-sub-panel" style="display: none;">
+                            <p style="font-size: 0.9rem;">
+                                <strong>Hadis Jibril (HR. Muslim):</strong><br>
+                                <em>"Rasulullah ﷺ bersabda tentang Ihsan: 'Engkau beribadah kepada Allah seakan-akan engkau melihat-Nya; jika engkau tidak mampu melihat-Nya, maka sesungguhnya Dia melihatmu.'"</em><br>
+                                <strong>Q.S. Al-Qashash [28]: 77:</strong> <em>"...Dan berbuat baiklah (kepada orang lain) sebagaimana Allah telah berbuat baik kepadamu..."</em>
+                            </p>
+                        </div>
+
+                        <!-- Konten 3: Macam-Macam Ihsan -->
+                        <div id="ihsan-macam" class="ihsan-sub-panel" style="display: none;">
+                            <strong style="font-size: 0.9rem; color: var(--gold-dark);">Macam-Macam Ruang Lingkup Ihsan:</strong>
+                            <ul class="pillar-list" style="margin-top: 0.4rem;">
+                                <li>Ihsan kepada Allah Swt. (beribadah dengan khusyuk, ikhlas, dan penuh kesadaran diawasi Allah)</li>
+                                <li>Ihsan kepada sesama manusia (berbakti kepada orang tua, jujur, santun, dan gemar menolong)</li>
+                                <li>Ihsan kepada alam lingkungan & makhluk hidup (menjaga kebersihan dan tidak merusak ekosistem)</li>
+                            </ul>
+                        </div>
+
+                        <!-- Konten 4: Ciri Orang yang Memiliki Sifat Ihsan -->
+                        <div id="ihsan-ciri" class="ihsan-sub-panel" style="display: none;">
+                            <strong style="font-size: 0.9rem; color: var(--gold-dark);">Ciri-Ciri Orang yang Memiliki Sifat Ihsan (Muhsin):</strong>
+                            <ul class="pillar-list" style="margin-top: 0.4rem;">
+                                <li>Senantiasa jujur dan amanah baik saat dilihat orang lain maupun ketika sendirian.</li>
+                                <li>Melaksanakan ibadah dan pekerjaan dengan sungguh-sungguh serta kualitas terbaik.</li>
+                                <li>Pemaaf, sabar menahan amarah, dan gemar bersedekah di waktu lapang maupun sempit.</li>
+                                <li>Menjaga kelestarian lingkungan dan menyayangi sesama makhluk ciptaan Allah.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Konten 5: Hikmah Berperilaku Ihsan -->
+                        <div id="ihsan-hikmah" class="ihsan-sub-panel" style="display: none;">
+                            <strong style="font-size: 0.9rem; color: var(--gold-dark);">Hikmah & Keutamaan Berperilaku Ihsan:</strong>
+                            <ul class="pillar-list" style="margin-top: 0.4rem;">
+                                <li>Dicintai oleh Allah Swt. (<em>Innallāha yuḥibbul-muḥsinīn</em>) dan disenangi sesama manusia.</li>
+                                <li>Mencegah diri dari perbuatan curang, korupsi, dan maksiat karena merasa diawasi Allah.</li>
+                                <li>Melahirkan ibadah yang khusyuk serta berdampak positif pada akhlak sehari-hari.</li>
+                                <li>Mewujudkan lingkungan madrasah dan masyarakat yang damai, peduli, dan harmonis.</li>
+                            </ul>
+                        </div>
+
+                        <div class="local-example-box">
+                            <strong>Konteks Lokal:</strong> Pedagang ikan di pasar tidak mencampur ikan segar dengan ikan busuk meskipun pembeli tidak tahu, karena merasa selalu diawasi Allah Swt.
+                        </div>
+                    </article>
+
+                    <!-- Kartu 4: HUBUNGAN IMAN, ISLAM, DAN IHSAN -->
+                    <article class="concept-card" style="border-top: 6px solid #0284c7;">
+                        <span class="concept-tag" style="background: #e0f2fe; color: #0369a1;">Integrasi Trilogi Akidah</span>
+                        <h4>4. HUBUNGAN IMAN, ISLAM, DAN IHSAN</h4>
+
+                        <!-- Tombol Eksplorasi Penjelasan Hubungan Ketiganya -->
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.65rem 0 0.85rem;">
+                            <button type="button" class="btn-info-pill btn-pill-emerald" style="font-size: 0.78rem; padding: 0.35rem 0.8rem;" onclick="toggleHubunganBox()">
+                                🔗 Penjelasan Hubungan Ketiganya
+                            </button>
+                        </div>
+
+                        <div id="hubunganKetiganyaDetail" style="display: none; background: var(--info-soft); border: 1px solid #bae6fd; border-radius: var(--radius-sm); padding: 0.85rem; margin-bottom: 0.75rem; font-size: 0.9rem;">
+                            <strong style="color: #0369a1; display: block; margin-bottom: 0.35rem;">Kesatuan Utuh Trilogi Ajaran Islam:</strong>
+                            <ul class="pillar-list" style="margin-top: 0.25rem;">
+                                <li><strong>Iman sebagai Pondasi:</strong> Keyakinan batin di dalam hati yang menjadi dasar seluruh amal.</li>
+                                <li><strong>Islam sebagai Bangunan:</strong> Wujud ketaatan lahiriah melalui pelaksanaan Rukun Islam di atas pondasi Iman.</li>
+                                <li><strong>Ihsan sebagai Atap & Penyempurna:</strong> Kualitas kekhusyukan dan akhlak mulia yang memperindah Iman dan Islam.</li>
+                                <li><strong>Tidak Dapat Dipisahkan:</strong> Iman tanpa Islam bagai pohon tak berbuah; Islam tanpa Iman bagai jasad tak bernyawa; dan keduanya tanpa Ihsan membuat ibadah kehilangan ruh kekhusyukan.</li>
+                            </ul>
+                        </div>
+
+                        <p style="font-size: 0.92rem;">
+                            Iman, Islam, dan Ihsan merupakan satu kesatuan yang saling menguatkan dalam diri seorang muslim agar selamat di dunia maupun di akhirat.
+                        </p>
+
+                        <div class="local-example-box">
+                            <strong>Konteks Lokal:</strong> Pelajar MTsN 3 Kab. Gorontalo meyakini Allah Maha Melihat (<strong>Iman</strong>), rajin melaksanakan salat zuhur berjamaah di musala madrasah (<strong>Islam</strong>), dan bersikap jujur serta santun kepada guru dan teman (<strong>Ihsan</strong>).
+                        </div>
+                    </article>
+                </div>
+
+                <div class="card" style="background: var(--gold-soft); border-color: var(--gold-light); margin-bottom: 0;">
+                    <h4 style="color: var(--gold-dark); margin-bottom: 0.4rem;">🔗 Hubungan Keterkaitan Iman, Islam, dan Ihsan</h4>
+                    <p style="font-size: 0.95rem;">
+                        <strong>Iman</strong> adalah pondasi keyakinan di dalam hati, <strong>Islam</strong> adalah bangunan amal ibadah lahiriah yang berdiri di atas pondasi tersebut, sedangkan <strong>Ihsan</strong> adalah atap dan keindahan yang menyempurnakan seluruh bangunan. Iman tanpa Islam bagaikan pohon tanpa buah; Islam tanpa Iman bagaikan jasad tanpa ruh; dan keduanya tanpa Ihsan membuat ibadah kehilangan kekhusyukan serta dampak akhlak mulia.
+                    </p>
+                </div>
+
+                <div class="action-row">
+                    <span style="font-size: 0.88rem; color: var(--slate-muted);">Sudah memahami konsep dasarnya? Mari uji keseimbangan ketiganya!</span>
+                    <button class="btn-primary" onclick="switchModule(2)">
+                        Lanjut ke Simulasi Rumah Akidah →
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             MODUL 2: SIMULASI INTERAKTIF MANIPULASI VARIABEL (SLIDER)
+             ================================================================== -->
+        <section id="module2" class="module-section">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <span>🏛️</span> Simulasi Interaktif: Arsitek Rumah Akidah Muslim
+                    </h2>
+                    <span class="badge-gold">Manipulasi Variabel Real-Time</span>
+                </div>
+
+                <p style="margin-bottom: 1.25rem; font-size: 0.95rem;">
+                    Geser ketiga tuas (<em>slider</em>) di bawah ini untuk mengatur tingkat <strong>Iman (Pondasi)</strong>, <strong>Islam (Dinding & Tiang Ibadah)</strong>, dan <strong>Ihsan (Atap & Cahaya Akhlak)</strong>. Amati perubahan struktur bangunan secara langsung dan baca analisis pedagogisnya!
+                </p>
+
+                <div class="sim-layout">
+                    <!-- Visualisasi SVG Dinamis Rumah Akidah -->
+                    <div class="house-canvas-box">
+                        <svg id="akidahHouseSvg" width="100%" height="290" viewBox="0 0 360 280" aria-label="Visualisasi Rumah Akidah">
+                            <!-- Langit & Cahaya Ihsan (Aura) -->
+                            <circle id="ihsanSun" cx="295" cy="52" r="28" fill="#fbbf24" opacity="0.9"/>
+                            <circle id="ihsanGlow" cx="295" cy="52" r="44" fill="#fde68a" opacity="0.45"/>
+
+                            <!-- Tanah Pesisir / Agraris -->
+                            <rect x="0" y="235" width="360" height="45" fill="#15803d" rx="6"/>
+                            <rect x="0" y="235" width="360" height="8" fill="#166534"/>
+
+                            <!-- PONDASI: IMAN -->
+                            <g id="foundationGroup">
+                                <rect x="65" y="205" width="230" height="32" rx="4" fill="#064e3b" stroke="#022c22" stroke-width="2"/>
+                                <text x="180" y="225" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">PONDASI: IMAN (KEYAKINAN)</text>
+                            </g>
+
+                            <!-- DINDING & PILAR: ISLAM -->
+                            <g id="wallsGroup">
+                                <rect x="82" y="115" width="196" height="90" fill="#ffffff" stroke="#047857" stroke-width="3"/>
+                                <!-- 5 Pilar Rukun Islam -->
+                                <rect x="92" y="120" width="14" height="80" fill="#10b981" rx="2"/>
+                                <rect x="131" y="120" width="14" height="80" fill="#10b981" rx="2"/>
+                                <rect x="173" y="120" width="14" height="80" fill="#10b981" rx="2"/>
+                                <rect x="215" y="120" width="14" height="80" fill="#10b981" rx="2"/>
+                                <rect x="254" y="120" width="14" height="80" fill="#10b981" rx="2"/>
+                                <rect x="120" y="148" width="120" height="24" rx="4" fill="#064e3b" opacity="0.9"/>
+                                <text x="180" y="164" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="bold">5 PILAR: ISLAM</text>
+                            </g>
+
+                            <!-- ATAP & KUBAH: IHSAN -->
+                            <g id="roofGroup">
+                                <polygon points="62,115 180,45 298,115" fill="#d97706" stroke="#92400e" stroke-width="3"/>
+                                <path d="M150,63 Q180,22 210,63 Z" fill="#fbbf24" stroke="#b45309" stroke-width="2"/>
+                                <text x="180" y="98" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">ATAP: IHSAN (KUALITAS)</text>
+                            </g>
+
+                            <!-- Indikator Retak jika Pondasi Lemah -->
+                            <g id="crackIndicator" style="display: none;">
+                                <path d="M130,205 L142,218 L128,235" stroke="#ef4444" stroke-width="3" fill="none"/>
+                                <path d="M220,205 L208,220 L225,235" stroke="#ef4444" stroke-width="3" fill="none"/>
+                            </g>
+                        </svg>
+                        <div id="structureStatusBadge" style="font-weight: 800; color: var(--emerald-dark); font-size: 0.92rem; margin-top: 0.4rem;">
+                            Status Bangunan: Kokoh & Seimbang (100%)
+                        </div>
+                    </div>
+
+                    <!-- Panel Kontrol Slider -->
+                    <div class="controls-panel">
+                        <div class="slider-group">
+                            <div class="slider-label-row">
+                                <label for="sliderIman">1. Kekuatan IMAN (Pondasi Hati)</label>
+                                <span class="slider-val" id="valIman">100%</span>
+                            </div>
+                            <input type="range" id="sliderIman" min="10" max="100" value="100" oninput="updateHouseSimulation()">
+                        </div>
+
+                        <div class="slider-group">
+                            <div class="slider-label-row">
+                                <label for="sliderIslam">2. Ketaatan ISLAM (5 Pilar Ibadah)</label>
+                                <span class="slider-val" id="valIslam">100%</span>
+                            </div>
+                            <input type="range" id="sliderIslam" min="10" max="100" value="100" oninput="updateHouseSimulation()">
+                        </div>
+
+                        <div class="slider-group">
+                            <div class="slider-label-row">
+                                <label for="sliderIhsan">3. Kualitas IHSAN (Kesadaran Muraqabah)</label>
+                                <span class="slider-val" id="valIhsan">100%</span>
+                            </div>
+                            <input type="range" id="sliderIhsan" min="10" max="100" value="100" oninput="updateHouseSimulation()">
+                        </div>
+
+                        <div>
+                            <div style="font-size: 0.82rem; font-weight: 700; color: var(--slate-muted); margin-bottom: 0.45rem;">
+                                Uji Skenario Cepat (Klik untuk mengamati dampak):
+                            </div>
+                            <div class="preset-btns">
+                                <button class="preset-btn" onclick="applyPreset(20, 90, 30)">Kasus Riya' (Iman Lemah, Ibadah Pamer)</button>
+                                <button class="preset-btn" onclick="applyPreset(90, 25, 40)">Mengaku Beriman Tapi Malas Salat</button>
+                                <button class="preset-btn" onclick="applyPreset(100, 100, 100)">Muslim Kamil (Seimbang)</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dialog Umpan Balik Pedagogis Real-Time -->
+                <div id="simDiagnostic" class="diagnostic-dialog">
+                    <div class="diagnostic-title" id="diagTitle">Analisis Arsitektur Akidah: Kondisi Ideal (Muslim Kamil)</div>
+                    <p id="diagText">
+                        Masya Allah! Pondasi Iman menghunjam kuat, lima pilar rukun Islam tegak berdiri, dan atap Ihsan menaungi seluruh perilaku dengan akhlak mulia. Inilah gambaran seorang mukmin yang selamat di dunia dan akhirat.
+                    </p>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-secondary" onclick="switchModule(1)">← Kembali ke Materi</button>
+                    <button class="btn-primary" onclick="switchModule(3)">Lanjut ke Lab Kasus Gorontalo →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             MODUL 3: AKTIVITAS KINESTETIK KLASIFIKASI KASUS KONTEKSTUAL
+             ================================================================== -->
+        <section id="module3" class="module-section">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <span>🧩</span> Laboratorium Klasifikasi Kasus Kontekstual Gorontalo
+                    </h2>
+                    <span class="badge-gold" id="labProgressBadge">Terselesaikan: 0 / 6 Kasus</span>
+                </div>
+
+                <div class="kinesthetic-instructions">
+                    <span style="font-size: 1.35rem;">👆</span>
+                    <div>
+                        <strong>Cara Bermain (Kompetisi Kelompok):</strong> Seret (<em>drag & drop</em>) kartu perilaku murid/masyarakat di bawah ini ke dalam kotak dimensi yang paling tepat (<strong>Iman, Islam, atau Ihsan</strong>). Jika menggunakan layar sentuh HP, cukup <strong>ketuk kartu kasus</strong> hingga menyala emas, lalu <strong>ketuk kotak tujuan</strong>!
+                    </div>
+                </div>
+
+                <!-- Kolam Kartu Studi Kasus -->
+                <div class="scenario-pool" id="scenarioPool">
+                    <!-- Diisi otomatis oleh JavaScript agar mudah di-reset -->
+                </div>
+
+                <!-- 3 Zona Target (Iman, Islam, Ihsan) -->
+                <div class="drop-zones-grid">
+                    <div class="drop-zone" data-category="iman" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="handleDrop(event, 'iman')" onclick="handleZoneClick('iman')">
+                        <div class="drop-zone-header">
+                            <h4>💚 Dimensi IMAN</h4>
+                            <p>Keyakinan Hati & Tawakal</p>
+                        </div>
+                        <div class="dropped-list" id="zone-iman"></div>
+                    </div>
+
+                    <div class="drop-zone" data-category="islam" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="handleDrop(event, 'islam')" onclick="handleZoneClick('islam')">
+                        <div class="drop-zone-header">
+                            <h4>🕌 Dimensi ISLAM</h4>
+                            <p>Pelaksanaan 5 Rukun Islam</p>
+                        </div>
+                        <div class="dropped-list" id="zone-islam"></div>
+                    </div>
+
+                    <div class="drop-zone" data-category="ihsan" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="handleDrop(event, 'ihsan')" onclick="handleZoneClick('ihsan')">
+                        <div class="drop-zone-header">
+                            <h4>✨ Dimensi IHSAN</h4>
+                            <p>Kualitas Amal & Muraqabah</p>
+                        </div>
+                        <div class="dropped-list" id="zone-ihsan"></div>
+                    </div>
+                </div>
+
+                <!-- Dialog Umpan Balik Edukatif (Bukan sekadar benar/salah, memandu penalaran) -->
+                <div id="labFeedbackBox" class="pedagogical-feedback">
+                    <strong id="labFeedbackTitle" style="display: block; margin-bottom: 0.25rem;"></strong>
+                    <span id="labFeedbackMsg"></span>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-secondary" onclick="initLabCases()">↻ Acak Ulang Kasus</button>
+                    <button class="btn-primary" onclick="switchModule(4)">Lanjut ke Kuis Evaluasi (5 Soal) →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             MODUL 4: KUIS EVALUASI FORMATIF & PEMBAHASAN OTOMATIS
+             ================================================================== -->
+        <section id="module4" class="module-section">
+            <div class="card" id="quizContainer">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <span>📝</span> Evaluasi Formatif Akidah Islam
+                    </h2>
+                    <span class="badge-gold" id="quizCounterBadge">Soal 1 dari 5</span>
+                </div>
+
+                <div class="quiz-progress-bar">
+                    <div class="quiz-progress-fill" id="quizProgressFill"></div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-meta" id="qCategoryMeta">Indikator: Pengertian & Hubungan Iman, Islam, Ihsan</div>
+                    <div class="question-text" id="qText">Memuat pertanyaan...</div>
+                </div>
+
+                <div class="options-stack" id="optionsContainer">
+                    <!-- Pilihan jawaban dirender melalui JS -->
+                </div>
+
+                <!-- Kotak Pembahasan Langsung Tiap Soal -->
+                <div class="explanation-card" id="qExplanationCard">
+                    <strong id="qStatusHeader" style="display: block; margin-bottom: 0.3rem; font-size: 1rem;"></strong>
+                    <p id="qExplanationText" style="font-size: 0.94rem;"></p>
+                </div>
+
+                <div class="action-row">
+                    <span id="quizHintNote" style="font-size: 0.85rem; color: var(--slate-muted);">Pilih salah satu jawaban yang paling tepat.</span>
+                    <button class="btn-primary" id="nextQuestionBtn" onclick="nextQuestion()" style="display: none;">
+                        Soal Berikutnya →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Layar Hasil Akhir & Rekap Pembahasan Lengkap -->
+            <div class="card" id="quizResultContainer" style="display: none;">
+                <div class="score-summary-box">
+                    <div style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Hasil Evaluasi Pembelajaran</div>
+                    <div id="resultTeamName" style="font-weight: 700; font-size: 1.15rem; margin-top: 0.25rem;">MTs Negeri 3 Kab. Gorontalo</div>
+                    <div class="big-score" id="finalScoreText">100</div>
+                    <div id="resultPredicateText" style="font-size: 1rem; max-width: 560px; margin: 0 auto;"></div>
+                </div>
+
+                <!-- Form Pengiriman Hasil ke Google Sheets (Apps Script) -->
+                <div style="background: var(--emerald-soft); border: 2px solid var(--emerald-light); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem;">
+                    <h4 style="color: var(--emerald-dark); margin-bottom: 0.5rem;">📤 Kirim Rekap Nilai ke Spreadsheet Guru</h4>
+                    <p style="font-size: 0.88rem; color: var(--slate-text); margin-bottom: 0.85rem;">
+                        Isi identitas di bawah ini untuk merekam Poin Akidah dan Skor Kuis secara otomatis ke database guru (memerlukan koneksi internet saat mengirim):
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin-bottom: 0.85rem;">
+                        <input type="text" id="studentNameInput" placeholder="Nama Lengkap / Nama Kelompok" style="padding: 0.7rem 0.9rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-size: 0.92rem; width: 100%;">
+                        <input type="text" id="studentClassInput" placeholder="Kelas (Contoh: VIII-A)" style="padding: 0.7rem 0.9rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-size: 0.92rem; width: 100%;">
+                    </div>
+                    <button type="button" class="btn-primary" id="btnSendSpreadsheet" onclick="sendScoreToGoogleSheet()">
+                        🚀 Kirim Nilai ke Guru
+                    </button>
+                    <div id="sheetSendStatus" style="margin-top: 0.65rem; font-size: 0.88rem; font-weight: 700;"></div>
+                </div>
+
+                <h3 style="color: var(--emerald-dark); margin-bottom: 1rem;">📚 Lembar Pembahasan Lengkap (Sesuai Kurikulum Madrasah)</h3>
+                <div id="fullReviewList">
+                    <!-- Rekap 5 soal dan pembahasannya dirender otomatis -->
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-secondary" onclick="restartQuiz()">↻ Ulangi Kuis Evaluasi</button>
+                    <button class="btn-primary" onclick="switchModule(1)">Kembali ke Beranda Materi</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        Media Pembelajaran Interaktif (MPI) Offline • MTs Negeri 3 Kabupaten Gorontalo • Kementerian Agama RI
+    </footer>
+
+    <!-- ======================================================================
+         LOGIKA INTERAKTIVITAS & BANK SOAL MANDIRI (100% OFFLINE JAVASCRIPT)
+         ====================================================================== -->
+    <script>
+        /* ----------------------------------------------------------------------
+           0. KONTROL COVER PEMBUKA
+           ---------------------------------------------------------------------- */
+        function enterLearningApp() {
+            const cover = document.getElementById('coverOverlay');
+            if (cover) {
+                cover.classList.add('hidden');
+            }
+        }
+
+        function showCoverOverlay() {
+            const cover = document.getElementById('coverOverlay');
+            if (cover) {
+                cover.classList.remove('hidden');
+            }
+        }
+
+        function toggleInfoPanel(panelId) {
+            const targetBox = document.getElementById(panelId);
+            if (!targetBox) return;
+
+            const isCurrentlyVisible = targetBox.style.display === 'block';
+            // Tutup panel lain terlebih dahulu agar tampilan tetap rapi
+            document.querySelectorAll('.info-toggle-panel').forEach(panel => {
+                panel.style.display = 'none';
+            });
+
+            if (!isCurrentlyVisible) {
+                targetBox.style.display = 'block';
+            }
+        }
+
+        function toggleImanTab(panelId) {
+            document.querySelectorAll('.iman-sub-panel').forEach(panel => {
+                panel.style.display = 'none';
+            });
+            const target = document.getElementById(panelId);
+            if (target) {
+                target.style.display = 'block';
+            }
+        }
+
+        function toggleIslamTab(panelId) {
+            document.querySelectorAll('.islam-sub-panel').forEach(panel => {
+                panel.style.display = 'none';
+            });
+            const target = document.getElementById(panelId);
+            if (target) {
+                target.style.display = 'block';
+            }
+        }
+
+        function toggleIhsanTab(panelId) {
+            document.querySelectorAll('.ihsan-sub-panel').forEach(panel => {
+                panel.style.display = 'none';
+            });
+            const target = document.getElementById(panelId);
+            if (target) {
+                target.style.display = 'block';
+            }
+        }
+
+        function toggleHubunganBox() {
+            const box = document.getElementById('hubunganKetiganyaDetail');
+            if (box) {
+                box.style.display = box.style.display === 'none' ? 'block' : 'none';
+            }
+        }
+
+        /* ----------------------------------------------------------------------
+           1. MANAJEMEN STATE & GAMIFIKASI
+           ---------------------------------------------------------------------- */
+        let totalXP = 0;
+        let selectedCardId = null;
+        let completedCasesCount = 0;
+        let simBonusAwarded = false;
+
+        function addXP(points) {
+            totalXP += points;
+            const scoreEl = document.getElementById('xpScore');
+            scoreEl.textContent = totalXP;
+            scoreEl.parentElement.style.transform = 'scale(1.12)';
+            setTimeout(() => {
+                scoreEl.parentElement.style.transform = 'scale(1)';
+            }, 220);
+        }
+
+        function switchModule(modNumber) {
+            // Sembunyikan semua modul
+            document.querySelectorAll('.module-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+            // Aktifkan modul pilihan
+            document.getElementById('module' + modNumber).classList.add('active');
+            document.getElementById('tabBtn' + modNumber).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* ----------------------------------------------------------------------
+           2. MODUL 2: SIMULASI RUMAH AKIDAH (REAL-TIME FEEDBACK)
+           ---------------------------------------------------------------------- */
+        function applyPreset(iman, islam, ihsan) {
+            document.getElementById('sliderIman').value = iman;
+            document.getElementById('sliderIslam').value = islam;
+            document.getElementById('sliderIhsan').value = ihsan;
+            updateHouseSimulation();
+        }
+
+        function updateHouseSimulation() {
+            const iman = parseInt(document.getElementById('sliderIman').value, 10);
+            const islam = parseInt(document.getElementById('sliderIslam').value, 10);
+            const ihsan = parseInt(document.getElementById('sliderIhsan').value, 10);
+
+            document.getElementById('valIman').textContent = iman + '%';
+            document.getElementById('valIslam').textContent = islam + '%';
+            document.getElementById('valIhsan').textContent = ihsan + '%';
+
+            // Manipulasi visual SVG secara real-time
+            const foundationGroup = document.getElementById('foundationGroup');
+            const wallsGroup = document.getElementById('wallsGroup');
+            const roofGroup = document.getElementById('roofGroup');
+            const ihsanSun = document.getElementById('ihsanSun');
+            const ihsanGlow = document.getElementById('ihsanGlow');
+            const crackIndicator = document.getElementById('crackIndicator');
+
+            foundationGroup.style.opacity = Math.max(0.25, iman / 100);
+            wallsGroup.style.opacity = Math.max(0.25, islam / 100);
+            roofGroup.style.opacity = Math.max(0.25, ihsan / 100);
+            ihsanSun.style.opacity = ihsan / 100;
+            ihsanGlow.style.opacity = (ihsan / 100) * 0.5;
+
+            // Tampilkan retakan jika pondasi Iman rapuh (< 45%)
+            crackIndicator.style.display = iman < 45 ? 'block' : 'none';
+
+            // Efek kemiringan dinding jika pondasi Iman jauh lebih lemah dari bangunan Islam
+            if (iman < 45 && islam > 60) {
+                wallsGroup.setAttribute('transform', 'skewX(-4) translate(12, 0)');
+                roofGroup.setAttribute('transform', 'skewX(-4) translate(12, 0)');
+            } else {
+                wallsGroup.removeAttribute('transform');
+                roofGroup.removeAttribute('transform');
+            }
+
+            // Analisis Diagnostik Pedagogis
+            const diagBox = document.getElementById('simDiagnostic');
+            const diagTitle = document.getElementById('diagTitle');
+            const diagText = document.getElementById('diagText');
+            const statusBadge = document.getElementById('structureStatusBadge');
+
+            const avg = Math.round((iman + islam + ihsan) / 3);
+            statusBadge.textContent = `Indeks Kekokohan Akidah: ${avg}%`;
+
+            diagBox.classList.remove('warning', 'danger');
+
+            if (iman < 45) {
+                diagBox.classList.add('danger');
+                diagTitle.textContent = '⚠️ Peringatan Pondasi: Iman Rapuh (Bahaya Riya’ / Kemunafikan)';
+                diagText.textContent = 'Perhatikan pondasi bangunan yang retak! Meskipun ibadah lahiriah (Islam) terlihat tinggi, jika tidak dilandasi keyakinan Iman yang ikhlas kepada Allah Swt., amal tersebut rapuh dan tidak bernilai di sisi-Nya.';
+            } else if (islam < 45) {
+                diagBox.classList.add('warning');
+                diagTitle.textContent = '⚡ Peringatan Pilar: Keyakinan Ada, Namun Amal Islam Lemah';
+                diagText.textContent = 'Seseorang mengaku beriman di dalam hati, tetapi meninggalkan salat, puasa, atau kewajiban syariat lainnya. Iman yang benar seharusnya mendorong tubuh untuk tunduk melaksanakan Rukun Islam.';
+            } else if (ihsan < 50) {
+                diagBox.classList.add('warning');
+                diagTitle.textContent = '🌤️ Peringatan Atap: Ibadah Rutin, Namun Kualitas Ihsan Kurang';
+                diagText.textContent = 'Pondasi Iman dan pilar Islam sudah berdiri, tetapi atap Ihsan masih tipis. Akibatnya, ibadah terasa sekadar menggugurkan kewajiban dan belum melahirkan akhlak jujur saat sendirian.';
+            } else {
+                diagTitle.textContent = '✅ Kondisi Ideal: Trilogi Iman, Islam, dan Ihsan Seimbang!';
+                diagText.textContent = 'Masya Allah! Pondasi Iman menghunjam kuat, lima pilar rukun Islam tegak berdiri, dan atap Ihsan memancarkan akhlak mulia di lingkungan madrasah maupun masyarakat Gorontalo.';
+                if (!simBonusAwarded && iman === 100 && islam === 100 && ihsan === 100) {
+                    simBonusAwarded = true;
+                    addXP(15);
+                }
+            }
+        }
+
+        /* ----------------------------------------------------------------------
+           3. MODUL 3: LABORATORIUM KINESTETIK (DRAG-AND-DROP & TAP-TO-PLACE)
+           ---------------------------------------------------------------------- */
+        const labScenarios = [
+            {
+                id: 'case1',
+                tag: 'Pesisir Biluhu',
+                text: 'Nelayan tetap tenang dan bersabar saat gelombang tinggi melanda karena yakin rezeki dan keselamatan diatur oleh Allah Swt.',
+                category: 'iman',
+                rationale: 'Tepat sekali! Keyakinan hati terhadap takdir (Qada dan Qadar) serta tawakal kepada Allah Swt. merupakan inti dari dimensi IMAN.'
+            },
+            {
+                id: 'case2',
+                tag: 'Agraris Tibawa',
+                text: 'Pak Ahmad menyisihkan 5% hasil panen jagungnya untuk dibagikan kepada fakir miskin sebagai zakat pertanian.',
+                category: 'islam',
+                rationale: 'Benar! Menunaikan zakat ketika harta mencapai nisab adalah pelaksanaan nyata dari Rukun ISLAM yang ketiga.'
+            },
+            {
+                id: 'case3',
+                tag: 'Lingkungan Madrasah',
+                text: 'Siti tetap mengerjakan ujian Akidah Akhlak dengan jujur tanpa menyontek meskipun pengawas sedang keluar kelas, karena yakin Allah melihatnya.',
+                category: 'ihsan',
+                rationale: 'Luar biasa! Kesadaran merasa diawasi oleh Allah Swt. (Muraqabah) sehingga berbuat jujur saat sendirian adalah wujud nyata IHSAN.'
+            },
+            {
+                id: 'case4',
+                tag: 'Kehidupan Sehari-hari',
+                text: 'Murid MTsN 3 segera menghentikan permainan bola di lapangan saat azan Asar berkumandang untuk melaksanakan salat berjamaah.',
+                category: 'islam',
+                rationale: 'Tepat! Mendirikan salat lima waktu tepat pada waktunya merupakan tiang agama dalam dimensi ISLAM.'
+            },
+            {
+                id: 'case5',
+                tag: 'Danau Limboto',
+                text: 'Warga menjaga kelestarian ekosistem Danau Limboto dan tidak meracuni ikan karena meyakini alam adalah amanah titipan Tuhan.',
+                category: 'ihsan',
+                rationale: 'Benar! Berbuat baik dan tidak berbuat kerusakan terhadap lingkungan alam sekitar adalah bagian dari perilaku IHSAN.'
+            },
+            {
+                id: 'case6',
+                tag: 'Keyakinan Batin',
+                text: 'Seorang murid mempercayai sepenuh hati bahwa setiap ucapan dan perbuatannya dicatat oleh Malaikat Raqib dan Atid.',
+                category: 'iman',
+                rationale: 'Tepat sekali! Mempercayai keberadaan dan tugas malaikat adalah bagian dari Rukun IMAN yang kedua.'
+            }
+        ];
+
+        function initLabCases() {
+            const pool = document.getElementById('scenarioPool');
+            pool.innerHTML = '';
+            document.getElementById('zone-iman').innerHTML = '';
+            document.getElementById('zone-islam').innerHTML = '';
+            document.getElementById('zone-ihsan').innerHTML = '';
+            document.getElementById('labFeedbackBox').classList.remove('show');
+            selectedCardId = null;
+            completedCasesCount = 0;
+            updateLabBadge();
+
+            // Acak urutan kartu
+            const shuffled = [...labScenarios].sort(() => Math.random() - 0.5);
+
+            shuffled.forEach(item => {
+                const el = document.createElement('div');
+                el.className = 'drag-item';
+                el.id = item.id;
+                el.draggable = true;
+                el.innerHTML = `<span class="region-tag">📍 ${item.tag}</span><div>${item.text}</div>`;
+
+                // Event Drag Desktop
+                el.addEventListener('dragstart', (e) => {
+                    e.dataTransfer.setData('text/plain', item.id);
+                    selectCardForTap(item.id);
+                });
+
+                // Event Tap/Klik Mobile & Desktop
+                el.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    selectCardForTap(item.id);
+                });
+
+                pool.appendChild(el);
+            });
+        }
+
+        function selectCardForTap(cardId) {
+            document.querySelectorAll('.drag-item').forEach(c => c.classList.remove('selected'));
+            const card = document.getElementById(cardId);
+            if (card) {
+                card.classList.add('selected');
+                selectedCardId = cardId;
+            }
+        }
+
+        function allowDrop(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add('drag-over');
+        }
+
+        function leaveDrop(e) {
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleDrop(e, targetCategory) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('drag-over');
+            const cardId = e.dataTransfer.getData('text/plain') || selectedCardId;
+            if (cardId) {
+                evaluatePlacement(cardId, targetCategory);
+            }
+        }
+
+        function handleZoneClick(targetCategory) {
+            if (selectedCardId) {
+                evaluatePlacement(selectedCardId, targetCategory);
+            }
+        }
+
+        function evaluatePlacement(cardId, targetCategory) {
+            const scenario = labScenarios.find(s => s.id === cardId);
+            const cardEl = document.getElementById(cardId);
+            if (!scenario || !cardEl) return;
+
+            const fbBox = document.getElementById('labFeedbackBox');
+            const fbTitle = document.getElementById('labFeedbackTitle');
+            const fbMsg = document.getElementById('labFeedbackMsg');
+
+            fbBox.classList.remove('success', 'hint');
+
+            if (scenario.category === targetCategory) {
+                // Pindahkan ke zona yang benar
+                cardEl.remove();
+                selectedCardId = null;
+
+                const placedEl = document.createElement('div');
+                placedEl.className = 'placed-badge';
+                placedEl.innerHTML = `<strong>✓ [${scenario.tag}]</strong> ${scenario.text}`;
+                document.getElementById('zone-' + targetCategory).appendChild(placedEl);
+
+                completedCasesCount++;
+                updateLabBadge();
+                addXP(15);
+
+                fbBox.classList.add('success', 'show');
+                fbTitle.textContent = '🎉 Analisis Kelompok Tepat! (+15 Poin Akidah)';
+                fbMsg.textContent = scenario.rationale;
+            } else {
+                // Panduan penalaran edukatif jika keliru
+                fbBox.classList.add('hint', 'show');
+                fbTitle.textContent = '🤔 Mari Tinjau Kembali Penalaran Kita...';
+
+                let hintGuidance = '';
+                if (scenario.category === 'iman') {
+                    hintGuidance = 'Perhatikan kata kunci pada kartu tersebut: fokus utamanya adalah keyakinan di dalam hati terhadap takdir atau malaikat Allah, bukan gerakan ibadah fisik. Coba arahkan ke dimensi yang menaungi keyakinan hati!';
+                } else if (scenario.category === 'islam') {
+                    hintGuidance = 'Cermati tindakan yang dilakukan: apakah itu merupakan kewajiban ibadah lahiriah yang termasuk dalam lima Rukun Islam (syahadat, salat, zakat, puasa, haji)?';
+                } else {
+                    hintGuidance = 'Perhatikan kualitas sikapnya: pelaku melakukannya dengan penuh kesadaran bahwa Allah selalu mengawasi (Muraqabah) atau berbuat baik kepada sesama/alam. Dimensi manakah yang membahas kesempurnaan akhlak tersebut?';
+                }
+                fbMsg.textContent = hintGuidance;
+            }
+        }
+
+        function updateLabBadge() {
+            document.getElementById('labProgressBadge').textContent = `Terselesaikan: ${completedCasesCount} / ${labScenarios.length} Kasus`;
+        }
+
+        /* ----------------------------------------------------------------------
+           4. MODUL 4: BANK SOAL EVALUASI FORMATIF (5 BUTIR + PEMBAHASAN LENGKAP)
+           ---------------------------------------------------------------------- */
+        const quizQuestions = [
+            {
+                meta: 'Soal 1 • Konsep Dasar Akidah Islam',
+                question: 'Dalam Hadis Jibril yang diriwayatkan oleh Imam Muslim, Rasulullah ﷺ menjelaskan tiga tingkatan pokok ajaran agama Islam secara berurutan, yaitu...',
+                options: [
+                    'Islam, Iman, dan Ihsan',
+                    'Ihsan, Islam, dan Takwa',
+                    'Iman, Islam, dan Ikhlas',
+                    'Syariat, Tarekat, dan Hakikat'
+                ],
+                correctIndex: 0,
+                explanation: 'Berdasarkan Hadis Jibril (HR. Muslim), Malaikat Jibril bertanya kepada Rasulullah ﷺ tentang tiga pokok ajaran agama secara berurutan: pertama tentang Islam (lima rukun Islam), kedua tentang Iman (enam rukun iman), dan ketiga tentang Ihsan (beribadah seakan melihat Allah).'
+            },
+            {
+                meta: 'Soal 2 • Penerapan Dimensi Ihsan (Muraqabah)',
+                question: 'Seorang pedagang ikan di pesisir Gorontalo tetap menimbang dagangannya dengan jujur meskipun pembeli tidak memperhatikan timbangannya, karena ia yakin Allah Swt. selalu melihat perbuatannya. Sikap pedagang tersebut mencerminkan pengamalan...',
+                options: [
+                    'Rukun Islam yang keempat',
+                    'Ihsan dalam bermuamalah',
+                    'Iman kepada kitab-kitab Allah',
+                    'Syarat wajib zakat mal'
+                ],
+                correctIndex: 1,
+                explanation: 'Ihsan secara istilah adalah beribadah dan beraktivitas seakan-akan melihat Allah Swt., atau meyakini bahwa Allah Swt. senantiasa melihat kita (muraqabah). Kejujuran pedagang saat tidak diawasi manusia adalah buah langsung dari sifat Ihsan.'
+            },
+            {
+                meta: 'Soal 3 • Analisis Hubungan Iman dan Islam',
+                question: 'Perumpamaan yang paling tepat untuk menggambarkan hubungan antara Iman, Islam, dan Ihsan dalam kehidupan seorang muslim adalah...',
+                options: [
+                    'Iman sebagai atap rumah, Islam sebagai cat dinding, dan Ihsan sebagai halaman',
+                    'Iman sebagai pondasi yang menghunjam kuat, Islam sebagai bangunan/pilarnya, dan Ihsan sebagai penyempurna keindahannya',
+                    'Iman dan Islam dapat berdiri sendiri tanpa memerlukan Ihsan dalam bermasyarakat',
+                    'Islam hanya berlaku di masjid, sedangkan Iman dan Ihsan hanya berlaku di rumah'
+                ],
+                correctIndex: 1,
+                explanation: 'Iman merupakan pondasi keyakinan batin. Di atas pondasi Iman berdirilah bangunan amal lahiriah berupa Rukun Islam. Sedangkan Ihsan menyempurnakan kualitas keduanya agar melahirkan akhlak mulia.'
+            },
+            {
+                meta: 'Soal 4 • Dimensi Iman dalam Konteks Kehidupan',
+                question: 'Ketika musim kemarau panjang melanda lahan pertanian, seorang petani muslim di Kabupaten Gorontalo tetap berikhtiar mencari sumber air sambil berdoa dan meyakini sepenuhnya bahwa segala ketetapan berada di tangan Allah Swt. Sikap batin ini menunjukkan fungsi...',
+                options: [
+                    'Iman kepada Qada dan Qadar',
+                    'Pelaksanaan Rukun Islam kelima',
+                    'Ihsan kepada hewan ternak',
+                    'Iman kepada para rasul terdahulu'
+                ],
+                correctIndex: 0,
+                explanation: 'Keyakinan sepenuh hati terhadap ketetapan Allah Swt. (Qada dan Qadar) setelah melakukan usaha maksimal (ikhtiar) merupakan wujud pengamalan Rukun Iman yang keenam.'
+            },
+            {
+                meta: 'Soal 5 • Integrasi Trilogi Akidah',
+                question: 'Mengapa seseorang yang rajin melaksanakan salat dan puasa (aspek Islam), namun masih suka berbohong dan menyakiti tetangganya dinilai belum mencapai kesempurnaan beragama?',
+                options: [
+                    'Karena salat dan puasanya tidak wajib dilakukan setiap tahun',
+                    'Karena ibadah lahiriahnya belum diiringi penghayatan Iman yang kuat dan kualitas Ihsan dalam berakhlak',
+                    'Karena tetangga tidak memiliki hak untuk dihormati dalam akidah Islam',
+                    'Karena Ihsan hanya diwajibkan bagi para ulama dan pemimpin saja'
+                ],
+                correctIndex: 1,
+                explanation: 'Ibadah dalam dimensi Islam (seperti salat) seharusnya mencegah perbuatan keji dan mungkar apabila didasari Iman yang kokoh dan kualitas Ihsan. Jika akhlak kepada sesama masih buruk, berarti penghayatan Iman dan Ihsannya masih perlu diperbaiki.'
+            }
+        ];
+
+        let currentQIndex = 0;
+        let userAnswers = [];
+        let quizScore = 0;
+
+        function renderQuestion() {
+            const q = quizQuestions[currentQIndex];
+            document.getElementById('quizCounterBadge').textContent = `Soal ${currentQIndex + 1} dari ${quizQuestions.length}`;
+            document.getElementById('quizProgressFill').style.width = `${((currentQIndex + 1) / quizQuestions.length) * 100}%`;
+            document.getElementById('qCategoryMeta').textContent = q.meta;
+            document.getElementById('qText').textContent = q.question;
+
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+            const letters = ['A', 'B', 'C', 'D'];
+
+            q.options.forEach((optText, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerHTML = `<span class="opt-letter">${letters[idx]}</span><span>${optText}</span>`;
+                btn.onclick = () => selectQuizOption(idx, btn);
+                optionsContainer.appendChild(btn);
+            });
+
+            document.getElementById('qExplanationCard').classList.remove('show');
+            document.getElementById('nextQuestionBtn').style.display = 'none';
+            document.getElementById('quizHintNote').textContent = 'Pilih salah satu jawaban yang paling tepat.';
+        }
+
+        function selectQuizOption(selectedIndex, btnEl) {
+            const q = quizQuestions[currentQIndex];
+            const allBtns = document.querySelectorAll('.option-btn');
+
+            // Kunci semua tombol setelah menjawab
+            allBtns.forEach(b => b.disabled = true);
+
+            const isCorrect = selectedIndex === q.correctIndex;
+            userAnswers[currentQIndex] = {
+                selectedIndex,
+                isCorrect
+            };
+
+            if (isCorrect) {
+                btnEl.classList.add('correct');
+                quizScore += 20;
+                addXP(20);
+                document.getElementById('qStatusHeader').textContent = '✅ Jawaban Tepat! (+20 Poin Akidah)';
+                document.getElementById('qStatusHeader').style.color = '#065f46';
+            } else {
+                btnEl.classList.add('wrong');
+                allBtns[q.correctIndex].classList.add('correct');
+                document.getElementById('qStatusHeader').textContent = '❌ Kurang Tepat — Mari Pelajari Pembahasannya:';
+                document.getElementById('qStatusHeader').style.color = '#991b1b';
+            }
+
+            document.getElementById('qExplanationText').textContent = q.explanation;
+            document.getElementById('qExplanationCard').classList.add('show');
+
+            const nextBtn = document.getElementById('nextQuestionBtn');
+            nextBtn.style.display = 'inline-flex';
+            nextBtn.textContent = currentQIndex === quizQuestions.length - 1 ? 'Lihat Hasil & Rekap Pembahasan →' : 'Soal Berikutnya →';
+            document.getElementById('quizHintNote').textContent = 'Baca pembahasan di atas sebelum melanjutkan.';
+        }
+
+        function nextQuestion() {
+            if (currentQIndex < quizQuestions.length - 1) {
+                currentQIndex++;
+                renderQuestion();
+            } else {
+                showFinalQuizResults();
+            }
+        }
+
+        function showFinalQuizResults() {
+            document.getElementById('quizContainer').style.display = 'none';
+            document.getElementById('quizResultContainer').style.display = 'block';
+
+            document.getElementById('resultTeamName').textContent = 'Peserta Didik MTsN 3 Kab. Gorontalo';
+            document.getElementById('finalScoreText').textContent = `${quizScore} / 100`;
+
+            let predicate = '';
+            if (quizScore === 100) {
+                predicate = 'Mumtaz (Sempurna)! Kelompok kalian telah memahami konsep Iman, Islam, dan Ihsan secara mendalam dan kontekstual.';
+            } else if (quizScore >= 80) {
+                predicate = 'Jayyid Jiddan (Sangat Baik)! Pemahaman akidah kalian sudah sangat kuat, perhatikan kembali detail pembahasan di bawah ini.';
+            } else {
+                predicate = 'Terus Semangat Belajar! Pelajari kembali pembahasan setiap soal di bawah ini bersama anggota kelompokmu.';
+            }
+            document.getElementById('resultPredicateText').textContent = predicate;
+
+            // Render Rekap Lengkap 5 Soal + Pembahasan
+            const reviewList = document.getElementById('fullReviewList');
+            reviewList.innerHTML = '';
+            const letters = ['A', 'B', 'C', 'D'];
+
+            quizQuestions.forEach((q, idx) => {
+                const ans = userAnswers[idx];
+                const userChoiceText = ans ? `${letters[ans.selectedIndex]}. ${q.options[ans.selectedIndex]}` : 'Tidak dijawab';
+                const correctChoiceText = `${letters[q.correctIndex]}. ${q.options[q.correctIndex]}`;
+
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'review-item';
+                itemDiv.innerHTML = `
+                    <div style="font-weight: 800; color: var(--emerald-dark); margin-bottom: 0.35rem;">
+                        ${idx + 1}. ${q.question}
+                    </div>
+                    <div style="font-size: 0.88rem; margin-bottom: 0.25rem; color: ${ans && ans.isCorrect ? '#047857' : '#dc2626'}; font-weight: 700;">
+                        Jawaban Kelompok: ${userChoiceText} ${ans && ans.isCorrect ? '✓' : '✗'}
+                    </div>
+                    <div style="font-size: 0.88rem; margin-bottom: 0.5rem; color: #065f46; font-weight: 700;">
+                        Kunci Jawaban: ${correctChoiceText}
+                    </div>
+                    <div style="font-size: 0.88rem; background: #ffffff; padding: 0.65rem; border-radius: 8px; border-left: 3px solid var(--gold-primary);">
+                        <strong>Pembahasan:</strong> ${q.explanation}
+                    </div>
+                `;
+                reviewList.appendChild(itemDiv);
+            });
+        }
+
+        function restartQuiz() {
+            currentQIndex = 0;
+            userAnswers = [];
+            quizScore = 0;
+            document.getElementById('quizResultContainer').style.display = 'none';
+            document.getElementById('quizContainer').style.display = 'block';
+            document.getElementById('sheetSendStatus').textContent = '';
+            document.getElementById('btnSendSpreadsheet').disabled = false;
+            renderQuestion();
+        }
+
+        /* ----------------------------------------------------------------------
+           5. INTEGRASI PENGIRIMAN DATA KE GOOGLE APPS SCRIPT
+           ---------------------------------------------------------------------- */
+        const GOOGLE_SCRIPT_URL = 'PASTE_URL_WEB_APP_APPS_SCRIPT_ANDA_DI_SINI';
+
+        function sendScoreToGoogleSheet() {
+            const nama = document.getElementById('studentNameInput').value.trim();
+            const kelas = document.getElementById('studentClassInput').value.trim();
+            const statusEl = document.getElementById('sheetSendStatus');
+            const btnSend = document.getElementById('btnSendSpreadsheet');
+
+            if (!nama) {
+                statusEl.style.color = '#dc2626';
+                statusEl.textContent = '⚠️ Mohon isi Nama Murid atau Nama Kelompok terlebih dahulu.';
+                return;
+            }
+
+            if (GOOGLE_SCRIPT_URL === 'PASTE_URL_WEB_APP_APPS_SCRIPT_ANDA_DI_SINI') {
+                statusEl.style.color = '#b45309';
+                statusEl.textContent = 'ℹ️ URL Google Apps Script belum dipasang di dalam kode HTML.';
+                return;
+            }
+
+            btnSend.disabled = true;
+            statusEl.style.color = '#0369a1';
+            statusEl.textContent = '⏳ Sedang mengirim data nilai ke Google Sheets...';
+
+            const payload = {
+                nama: nama,
+                kelas: kelas || 'VIII',
+                poin: totalXP,
+                skorKuis: quizScore
+            };
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(() => {
+                statusEl.style.color = '#047857';
+                statusEl.textContent = '✅ Alhamdulillah! Nilai berhasil terkirim dan tersimpan di Google Sheets Guru.';
+            })
+            .catch(() => {
+                btnSend.disabled = false;
+                statusEl.style.color = '#dc2626';
+                statusEl.textContent = '❌ Gagal mengirim data. Periksa koneksi internet Anda lalu coba lagi.';
+            });
+        }
+
+        /* ----------------------------------------------------------------------
+           INISIALISASI SAAT HALAMAN DIMUAT
+           ---------------------------------------------------------------------- */
+        window.onload = function () {
+            updateHouseSimulation();
+            initLabCases();
+            renderQuestion();
+        };
+    </script>
+</body>
+</html>
