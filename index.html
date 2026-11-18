@@ -2470,7 +2470,7 @@
         /* ----------------------------------------------------------------------
            5. INTEGRASI PENGIRIMAN DATA KE GOOGLE APPS SCRIPT
            ---------------------------------------------------------------------- */
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyUOjjOWgHz1_vvZS69itEVSiqmA7KUW2nI9GoclmOvUoEQ9LYHBojZfzLpEPBSQf70/exec';
+        const GOOGLE_SCRIPT_URL = 'PASTE_URL_WEB_APP_APPS_SCRIPT_ANDA_DI_SINI';
 
         function sendScoreToGoogleSheet() {
             const nama = document.getElementById('studentNameInput').value.trim();
@@ -2494,20 +2494,16 @@
             statusEl.style.color = '#0369a1';
             statusEl.textContent = '⏳ Sedang mengirim data nilai ke Google Sheets...';
 
-            const payload = {
-                nama: nama,
-                kelas: kelas || 'VIII',
-                poin: totalXP,
-                skorKuis: quizScore
-            };
+            const formData = new URLSearchParams();
+            formData.append('nama', nama);
+            formData.append('kelas', kelas || 'VIII');
+            formData.append('poin', totalXP);
+            formData.append('skorKuis', quizScore);
 
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(payload)
+                body: formData
             })
             .then(() => {
                 statusEl.style.color = '#047857';
